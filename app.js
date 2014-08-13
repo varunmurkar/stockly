@@ -3,7 +3,7 @@ var express = require("express");
 var sentiment = require('sentiment');
 var twitter = require('ntwitter');
 
-var DEFAULT_TOPIC = "Apple Stocks";
+var DEFAULT_TOPIC = "AAPL";
 
 // defensiveness against errors parsing request bodies...
 process.on('uncaughtException', function (err) {
@@ -135,7 +135,7 @@ app.get('/', function (req, res) {
 			"about " + monitoringPhrase + ".<br><br>" +
 			"Analyzed " + tweetCount + " tweets...<br>" +
 			"</P>\n" +
-			"<A href=\"/reset\">Monitor another phrase</A>\n" +
+			"<A href=\"/reset\">Monitor another stock</A>\n" +
 			"</BODY>";
 		res.send(monitoringResponse);
 	}
@@ -147,7 +147,7 @@ app.get('/testSentiment', function (req, res) {
 		"</HEAD>\n" +
 		"<BODY>\n" +
 		"<P>\n" +
-		"Welcome to Stockly.  What company's sentiment would you like to analyze?\n" +
+		"Welcome to Stockly.  Which company's sentiment would you like to analyze?\n" +
 		"</P>\n" +
 		"<FORM action=\"/testSentiment\" method=\"get\">\n" +
 		"<P>\n" +
