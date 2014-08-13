@@ -106,10 +106,11 @@ function sentimentImage() {
 }
 
 app.get('/', function (req, res) {
-	var welcomeResponse = "<HEAD>" +
+	var welcomeResponse = "<head>" +
 		"<title>Stockly</title>\n" +
-		"</HEAD>\n" +
-		"<BODY>\n" +
+		"<meta name="description" content="">\n" +
+		"</head>\n" +
+		"<body>\n" +
 		"<P>\n" +
 		"Welcome to Stockly.<br>\n" +
 		"What would you like to monitor?\n" +
@@ -118,7 +119,7 @@ app.get('/', function (req, res) {
 		"<P>\n" +
 		"<INPUT type=\"text\" name=\"phrase\" value=\"" + DEFAULT_TOPIC + "\"><br><br>\n" +
 		"<INPUT type=\"submit\" value=\"Go\">\n" +
-		"</P>\n" + "</FORM>\n" + "</BODY>";
+		"</P>\n" + "</FORM>\n" + "</body>";
 	if (!monitoringPhrase) {
 		res.send(welcomeResponse);
 	} else {
