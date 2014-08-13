@@ -3,7 +3,7 @@ var express = require("express");
 var sentiment = require('sentiment');
 var twitter = require('ntwitter');
 
-var DEFAULT_TOPIC = "Justin Bieber";
+var DEFAULT_TOPIC = "Apple Stocks";
 
 // defensiveness against errors parsing request bodies...
 process.on('uncaughtException', function (err) {
@@ -20,15 +20,15 @@ app.configure(function() {
 // Sample keys for demo and article - you must get your own keys if you clone this application!
 // Create your own app at: https://dev.twitter.com/apps
 var tweeter = new twitter({
-	consumer_key: 'XDMBT427fgVzosqZlu07A',
-	consumer_secret: 'eWXL4TRv5B2UEHJ8cClCWt4Z2rF7yQIaVAbmj6A',
-	access_token_key: '14526702-uRxyEJuAcegZdlPahmMjY5gHIFleFiRL2ITpd0NR0',
-	access_token_secret: 'PrXTHWP2Mcpr7t1d7JCIaFlIR2yDcymeNFAhfqS9Y'
+	consumer_key: 'sMS2dCyalKp9SdmwOr7owHOLo',
+	consumer_secret: '15Ch7QQ0hIZOZzOay61ffcL0Brf4RS1kNyC58GzyJVOsxaxl5n',
+	access_token_key: '123481674-g4ovtHHUnI31PkinAo9wUGXRsXXck32teN0rUhVz',
+	access_token_secret: '7ZQsA2voJ993U1wyPZZJIZVF8OV7ju2EFa5TbGOVXpNiI'
 });
 
 app.get('/twitterCheck', function (req, res) {
 	tweeter.verifyCredentials(function (error, data) {
-		res.send("Hello, " + data.name + ".  I am in your twitters.");
+		res.send("Hello, " + data.name + ".  I am in your tweets.");
 	});
 });
 
@@ -37,7 +37,7 @@ var tweetTotalSentiment = 0;
 var monitoringPhrase;
 
 app.get('/sentiment', function (req, res) {
-	res.json({monitoring: (monitoringPhrase !== null), 
+	res.json({monitoring: (monitoringPhrase !== null),
 		monitoringPhrase: monitoringPhrase,
 		tweetCount: tweetCount,
 		tweetTotalSentiment: tweetTotalSentiment,
@@ -48,12 +48,12 @@ app.post('/sentiment', function (req, res) {
 	try {
 		if (req.body.phrase) {
 			beginMonitoring(req.body.phrase);
-			res.send(200);			
+			res.send(200);
 		} else {
-			res.status(400).send('Invalid request: send {"phrase": "bieber"}');		
+			res.status(400).send('Invalid request: send {"phrase": "aapl"}');
 		}
 	} catch (exception) {
-		res.status(400).send('Invalid request: send {"phrase": "bieber"}');
+		res.status(400).send('Invalid request: send {"phrase": "aapl"}');
 	}
 });
 
@@ -107,11 +107,11 @@ function sentimentImage() {
 
 app.get('/', function (req, res) {
 	var welcomeResponse = "<HEAD>" +
-		"<title>Twitter Sentiment Analysis</title>\n" +
+		"<title>Stockly</title>\n" +
 		"</HEAD>\n" +
 		"<BODY>\n" +
 		"<P>\n" +
-		"Welcome to the Twitter Sentiment Analysis app.<br>\n" + 
+		"Welcome to Stockly.<br>\n" +
 		"What would you like to monitor?\n" +
 		"</P>\n" +
 		"<FORM action=\"/monitor\" method=\"get\">\n" +
@@ -126,7 +126,7 @@ app.get('/', function (req, res) {
 			"<META http-equiv=\"refresh\" content=\"5; URL=http://" +
 			req.headers.host +
 			"/\">\n" +
-			"<title>Twitter Sentiment Analysis</title>\n" +
+			"<title>Stockly</title>\n" +
 			"</HEAD>\n" +
 			"<BODY>\n" +
 			"<P>\n" +
@@ -143,15 +143,15 @@ app.get('/', function (req, res) {
 
 app.get('/testSentiment', function (req, res) {
 	var response = "<HEAD>" +
-		"<title>Twitter Sentiment Analysis</title>\n" +
+		"<title>Stockly</title>\n" +
 		"</HEAD>\n" +
 		"<BODY>\n" +
 		"<P>\n" +
-		"Welcome to the Twitter Sentiment Analysis app.  What phrase would you like to analyze?\n" +
+		"Welcome to Stockly.  What company's sentiment would you like to analyze?\n" +
 		"</P>\n" +
 		"<FORM action=\"/testSentiment\" method=\"get\">\n" +
 		"<P>\n" +
-		"Enter a phrase to evaluate: <INPUT type=\"text\" name=\"phrase\"><BR>\n" +
+		"Enter a name (e.g. Apple, Google, Tata Steel)/NASDAQ ID (e.g. AAPL, GOOGL, TATASTEEL, etc.) to evaluate: <INPUT type=\"text\" name=\"phrase\"><BR>\n" +
 		"<INPUT type=\"submit\" value=\"Send\">\n" +
 		"</P>\n" +
 		"</FORM>\n" +

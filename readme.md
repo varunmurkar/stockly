@@ -1,4 +1,4 @@
-## Simple Sentiment Analysis application
+## Stockly
 
 ![Ambivalent Smiley](http://simplesentimentanalysis.ng.bluemix.net/images/content.png "Ambivalent Smiley")
 
@@ -27,7 +27,7 @@ Run the application with node:
 
     node app.js
 
-You should see a confirmation that the application is running on port 3000, 
+You should see a confirmation that the application is running on port 3000,
 and you can access it with your browser at http://localhost:3000.
 
 ### Running the application using a Cloud Foundry PaaS runtime
