@@ -1,0 +1,9 @@
+---
+applications:
+- name: sentiment-analysis
+  mem: 64M
+  instances: 1
+  command: node app.js
+  host: sentiment-analysis
+  domain: ng.bluemix.net
+  path: .
