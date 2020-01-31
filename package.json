@@ -3,15 +3,15 @@
   "description": "Stock Market Prediction App",
   "version": "0.9.1",
   "dependencies": {
-    "express": "3.x",
-    "sentiment": "0.2.1",
+    "express": "4.x",
+    "sentiment": "5.x",
     "ntwitter": "0.5.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.6.3"
+    "grunt": "1.x",
+    "grunt-contrib-jshint": "2.x"
   },
   "engines": {
-    "node": "0.10.26"
+    "node": "8.x"
   }
 }
