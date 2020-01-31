@@ -1,5 +1,5 @@
 {
-  "name": "Stockly",
+  "name": "stockly",
   "description": "Stock Market Prediction App",
   "version": "0.9.1",
   "dependencies": {
